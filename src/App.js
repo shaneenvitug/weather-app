@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
+import Fab from '@material-ui/core/Fab';
 import './App.css';
 
 const useStyles = makeStyles(theme => ({
@@ -20,6 +21,10 @@ function App() {
       <h1>Weather app coming soon!</h1>
        <form className={classes.root} noValidate autoComplete="off">
         <TextField id="standard-basic" label="City" />
+        {/* button material ui */}
+        <Fab variant="extended">
+          Search
+        </Fab>
       </form>
     </div>
   );
