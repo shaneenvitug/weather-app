@@ -16,13 +16,21 @@ const useStyles = makeStyles(theme => ({
 
 function App() {
   const [city, setCity] = useState();
+  const [weatherInfo, setWeatherInfo] = useState();
 
   const classes = useStyles();
 
   const getWeather = () => {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=dc0ba9ecf138c1e8167017659deef39b`).then(res => {
-      console.log(res);
-    })
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=dc0ba9ecf138c1e8167017659deef39b`)
+      .then(res => {
+        console.log(res.data);
+        setWeatherInfo({
+          city: res.data.city.name,
+          temperature: res.data.list[0].main.temp,
+          description: res.data.list[0].weather[0].main,
+          icon: res.data.list[0].weather[0].icon
+        });
+    })  
   }
 
   const handleChange = e => {
@@ -38,9 +46,26 @@ function App() {
         <Fab variant="extended" onClick={() => getWeather()} >
           Search
         </Fab>
+        <CurrentWeather 
+          city={weatherInfo.city} 
+          temperature={weatherInfo.temperature} 
+          description={weatherInfo.description} 
+          icon={weatherInfo.icon}
+        />
       </form>
     </div>
   );
+}
+
+const CurrentWeather = ({city, temperature, icon, description}) => {
+  return(
+    <div>
+      {city && <p>{city}</p>}
+      {temperature && <p>{Math.round(temperature)}&deg;C</p>}
+      {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={icon} />}
+      {description && <p>{description}</p>}
+    </div>
+  )
 }
 
 export default App;
