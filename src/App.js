@@ -20,7 +20,7 @@ function App() {
   const classes = useStyles();
 
   const getWeather = () => {
-    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&APPID=dc0ba9ecf138c1e8167017659deef39b`).then(res => {
+    axios.get(`https://api.openweathermap.org/data/2.5/forecast?q=${city}&units=metric&APPID=dc0ba9ecf138c1e8167017659deef39b`).then(res => {
       console.log(res);
     })
   }
