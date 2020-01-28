@@ -39,19 +39,18 @@ function App() {
 
   return (
     <div className="App">
-      <h1>Weather app coming soon!</h1>
        <form className={classes.root} noValidate autoComplete="off">
         <TextField id="standard-basic" label="City" value={city} onChange={handleChange}/>
         {/* button material ui */}
         <Fab variant="extended" onClick={() => getWeather()} >
           Search
         </Fab>
-        <CurrentWeather 
+        {weatherInfo && <CurrentWeather 
           city={weatherInfo.city} 
           temperature={weatherInfo.temperature} 
           description={weatherInfo.description} 
           icon={weatherInfo.icon}
-        />
+        />}
       </form>
     </div>
   );
@@ -59,11 +58,11 @@ function App() {
 
 const CurrentWeather = ({city, temperature, icon, description}) => {
   return(
-    <div>
-      {city && <p>{city}</p>}
-      {temperature && <p>{Math.round(temperature)}&deg;C</p>}
-      {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={icon} />}
+    <div className="weather">
+      {city && <p className="city">{city}</p>}
+      {temperature && <p className="temp">{Math.round(temperature)}&deg;</p>}
       {description && <p>{description}</p>}
+      {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={icon} />}
     </div>
   )
 }

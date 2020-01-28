@@ -32,7 +32,33 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+div.weather {
+  margin: 8em auto;
+  border-radius: 50%;
+  background-color: lightgray;
+  width: 300px;
+  height: 300px;
+}
+
+p {
+  font-size: 1.2em;
+}
+
+p.city {
+  padding-top: 1em;
+}
+
+p.temp {
+  font-size: 7em;
 }
