@@ -30,7 +30,12 @@ function App() {
           description: res.data.list[0].weather[0].main,
           icon: res.data.list[0].weather[0].icon
         });
-    })  
+    })
+    .catch(error => {
+      if (error.response) {
+        alert("Please Type A Valid City.")
+      };
+    }) 
   }
 
   const handleChange = e => {
