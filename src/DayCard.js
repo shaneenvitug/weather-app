@@ -1,4 +1,5 @@
 import React from 'react';
+import './DayCard.css';
 var moment = require('moment');
 
 const DayCard = ({reading}) => {
@@ -7,12 +8,10 @@ const DayCard = ({reading}) => {
   newDate.setTime(weekday)
 
   return (
-    <div>
-      {moment(newDate).format('dddd')}
-      {moment(newDate).format('MMM D')}
-      {Math.round(reading.main.temp)}&deg;C
-      <img src={`http://openweathermap.org/img/wn/${reading.weather[0].icon}@2x.png`} alt={reading.weather[0].icon}/>
-      {reading.weather[0].main}
+    <div className="dayCard">
+      <img className="icon" src={`http://openweathermap.org/img/wn/${reading.weather[0].icon}@2x.png`} alt={reading.weather[0].icon}/>
+      <p className="dayTemp">{Math.round(reading.main.temp)}&deg;</p>
+      <p>{moment(newDate).format('dddd')}</p>
     </div>
   )
 }

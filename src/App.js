@@ -51,7 +51,7 @@ function App() {
 
   return (
     <div className="App">
-       <form className={classes.root} noValidate autoComplete="off">
+       <div className={classes.root} noValidate autoComplete="off">
         <TextField id="standard-basic" label="City" value={city} onChange={handleChange}/>
         {/* button material ui */}
         <Fab variant="extended" onClick={() => getWeather()} >
@@ -63,8 +63,10 @@ function App() {
           description={weatherInfo.description} 
           icon={weatherInfo.icon}
         />}
+      </div>
+      <div className="container">
         {dayCards()}
-      </form>
+      </div>
     </div>
   );
 }
