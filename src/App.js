@@ -3,6 +3,7 @@ import axios from 'axios';
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
+import DayCard from './DayCard';
 import './App.css';
 
 const useStyles = makeStyles(theme => ({
@@ -17,6 +18,7 @@ const useStyles = makeStyles(theme => ({
 function App() {
   const [city, setCity] = useState();
   const [weatherInfo, setWeatherInfo] = useState();
+  const [dailyInfo, setDailyInfo] = useState([]);
 
   const classes = useStyles();
 
@@ -30,6 +32,7 @@ function App() {
           description: res.data.list[0].weather[0].main,
           icon: res.data.list[0].weather[0].icon
         });
+        setDailyInfo(res.data.list.filter(reading => reading.dt_txt.includes("18:00:00")))
     })
     .catch(error => {
       if (error.response) {
@@ -40,6 +43,10 @@ function App() {
 
   const handleChange = e => {
     setCity(e.target.value);
+  }
+
+  const dayCards = () => {
+    return dailyInfo.map((reading, index) => <DayCard reading={reading} key={index} />)
   }
 
   return (
@@ -56,6 +63,7 @@ function App() {
           description={weatherInfo.description} 
           icon={weatherInfo.icon}
         />}
+        {dayCards()}
       </form>
     </div>
   );
