@@ -11,7 +11,7 @@ const DayCard = ({reading}) => {
     <div className="dayCard">
       <img className="icon" src={`http://openweathermap.org/img/wn/${reading.weather[0].icon}@2x.png`} alt={reading.weather[0].icon}/>
       <p className="dayTemp">{Math.round(reading.main.temp)}&deg;</p>
-      <p>{moment(newDate).format('dddd')}</p>
+      <p>{moment(newDate).format('ddd')}</p>
     </div>
   )
 }
