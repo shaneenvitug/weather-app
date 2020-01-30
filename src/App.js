@@ -32,7 +32,7 @@ function App() {
           description: res.data.list[0].weather[0].main,
           icon: res.data.list[0].weather[0].icon
         });
-        setDailyInfo(res.data.list.filter(reading => reading.dt_txt.includes("18:00:00")))
+        setDailyInfo(res.data.list.filter(reading => reading.dt_txt.includes("00:00:00")))
     })
     .catch(error => {
       if (error.response) {
