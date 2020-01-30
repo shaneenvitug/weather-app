@@ -5,6 +5,7 @@ import TextField from '@material-ui/core/TextField';
 import Fab from '@material-ui/core/Fab';
 import DayCard from './DayCard';
 import './App.css';
+var moment = require('moment');
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -14,6 +15,8 @@ const useStyles = makeStyles(theme => ({
     },
   },
 }));
+
+let newDate = new Date();
 
 function App() {
   const [city, setCity] = useState();
@@ -75,7 +78,8 @@ const CurrentWeather = ({city, temperature, icon, description}) => {
   return(
     <div className="weather">
       {city && <p className="city">{city}</p>}
-      {temperature && <p className="temp">{Math.round(temperature)}&deg;</p>}
+      <p className="date">{moment(newDate).format('llll')}</p>
+      {temperature && <p className="temp">{Math.round(temperature)}<span id="degree">&deg;</span></p>}
       {description && <p>{description}</p>}
       {icon && <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`} alt={icon} />}
     </div>
