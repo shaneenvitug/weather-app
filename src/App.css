@@ -46,17 +46,18 @@
 div.weather {
   margin: 8em auto;
   border-radius: 50%;
-  background-color: lightgray;
-  width: 300px;
-  height: 300px;
+  background-color: #0000005c;
+  width: 400px;
+  height: 400px;
 }
 
 p {
   font-size: 1.2em;
+  color: white;
 }
 
 p.city {
-  padding-top: 1em;
+  padding-top: 4em;
 }
 
 p.temp {

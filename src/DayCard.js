@@ -10,6 +10,7 @@ const useStyles = makeStyles({
   card: {
     minWidth: 50,
     margin: 30,
+    backgroundColor: "#0000005c",
   },
   pos: {
     marginBottom: 12,
